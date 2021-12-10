@@ -17,6 +17,7 @@ public class Main {
 
 		System.out.println("Ahh der Strom läuft weg!");
 		gitgud(dino);
+		gitgud(kristin);
 
 
 	}
@@ -26,6 +27,8 @@ public class Main {
 	}
 	public static void gitgud(Item item) {
 		System.out.println(item.getName() + " Hat git integriert und ist jetzt voll im Projekt!" );
+
+
 	}
 	public static void typischAndy(){
 		System.out.println("Typisch Andy VS. Eclipse");
