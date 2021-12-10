@@ -1,6 +1,6 @@
 package com.example.server.entities;
 
-public enum Roles {
+public enum Role {
     ADMIN,
     AUTHOR,
     USER,

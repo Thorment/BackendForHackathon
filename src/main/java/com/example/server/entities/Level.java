@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Table
 @Getter
 @Setter
-public class Levels {
+public class Level {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

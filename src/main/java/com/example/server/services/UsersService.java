@@ -1,8 +1,6 @@
 package com.example.server.services;
 
-import com.example.server.entities.Levels;
-import com.example.server.entities.Users;
-import com.example.server.repositorys.LevelsRepository;
+import com.example.server.entities.User;
 import com.example.server.repositorys.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +12,7 @@ public class UsersService {
     @Autowired
     private UsersRepository usersRepository;
 
-    public List<Users> getAll(){
-        return (List<Users>) this.usersRepository.findAll();
+    public List<User> getAll(){
+        return (List<User>) this.usersRepository.findAll();
     }
 }
