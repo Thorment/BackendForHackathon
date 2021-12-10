@@ -22,7 +22,7 @@ public class Main {
 		dance(dino);
 		dance(kristin);
 		dance(ändy);
-
+		System.out.println("Warum gibts noch keine gitgud Funktion?");
 		typischÄndy();
 
 		System.out.println("Ahh der Strom läuft weg!");
