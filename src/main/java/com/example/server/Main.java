@@ -14,7 +14,6 @@ public class Main {
 		Item andy = new Item("Andy");
 		Item geralt = new Item("Geralt");
 
-
 		System.out.println("Ahh der Strom läuft weg!");
 		gitgud(dino);
 		gitgud(kristin);
