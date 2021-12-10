@@ -23,7 +23,7 @@ public class Main {
 		System.out.println(item.getName() + " tanzt für dich! yeah!" );
 	}
 	public static void gitgud(Item item) {
-		System.out.println(item.getName() + " Hat git integriert!" );
+		System.out.println(item.getName() + " Hat git integriert und ist jetzt voll im Projekt!" );
 	}
 	public static void typischAndy(){
 		System.out.println("Typisch Andy VS. Eclipse");
