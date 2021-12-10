@@ -14,24 +14,16 @@ public class Main {
 		Item ändy = new Item("Ändy");
 		Item gäralt = new Item("Gäralt");
 
-		if (dino.getName().equals( "Dino" )) {
-			System.out.println("guck mal wie er tanzt");
-		}
-		catchSpannungsabfall(gäralt);
-		dance(jan);
-		dance(dino);
-		dance(kristin);
-		dance(ändy);
-
-		typischÄndy();
-
-		System.out.println("Ahh der Strom läuft weg!");
+		gitKing(dino);
 
 
 	}
 
 	public static void dance(Item item) {
 		System.out.println(item.getName() + " tanzt für dich! yeah!" );
+	}
+	public static void gitKing(Item item) {
+		System.out.println(item.getName() + " Hat git integriert!" );
 	}
 
 
