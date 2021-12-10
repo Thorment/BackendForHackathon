@@ -21,7 +21,7 @@ public class Users {
     private Integer level;
 
 public void sout (){
-    System.out.println(new Users().getUserName());
+   // System.out.println(new Users().getUserName());
 }
 
 }
