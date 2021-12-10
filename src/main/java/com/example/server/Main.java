@@ -23,6 +23,7 @@ public class Main {
 		dance(kristin);
 		dance(ändy);
 
+		//TODO teständerung
 		typischÄndy();
 
 		System.out.println("Ahh der Strom läuft weg!");
