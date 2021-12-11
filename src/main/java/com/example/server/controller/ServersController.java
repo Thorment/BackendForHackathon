@@ -2,13 +2,14 @@ package com.example.server.controller;
 
 import com.example.server.entities.Level;
 import com.example.server.entities.User;
+import com.example.server.entities.UserRegistrationForm;
 import com.example.server.services.LevelsService;
 import com.example.server.services.UsersService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,7 +20,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-@Controller
+@RestController
 public class ServersController {
 
     @Autowired
@@ -27,14 +28,26 @@ public class ServersController {
     @Autowired
     private UsersService usersService;
 
-    @GetMapping("/levels")
-    public @ResponseBody List<Level> getLevels() {
-        return this.levelsService.getAll();
+    @GetMapping("/api/levels")
+    public @ResponseBody ResponseEntity getLevels() {
+        return ResponseEntity.status(200).body(this.levelsService.getAll());
     }
 
-    @GetMapping("/users")
-    public @ResponseBody List<User> getUsers() {
-        return this.usersService.getAll();
+    @GetMapping("/api/users")
+    public @ResponseBody ResponseEntity getUsers() {
+        return ResponseEntity.status(200).body(this.usersService.getAll());
+    }
+
+    @PostMapping("/api/user")
+    public @ResponseBody ResponseEntity createUser(@RequestBody UserRegistrationForm user) {
+        if (false) { //Datenbankabfrage ob es den User bereits gibt
+            return ResponseEntity.status(409).build();
+        } else {
+            User usa = new User(user);
+            usersService.saveUser(usa);
+            return ResponseEntity.status(200).build();
+        }
+
     }
 
 
@@ -44,7 +57,31 @@ public class ServersController {
      *
      * v             v /
      * http://localhost:8080/users
+     *
+     * localhost:8080 -> swagger url in der applicationproperties
+     *
+     *
+     * Post ->      Neue Dinge erzeugen
+     *
+     * Get ->       Bestehende Dinge abfragen
+     *
+     * Put ->       Bestehe Dinge manipulieren
+     *
+     * Delete ->    Dinge löschen (zb Sessions Cookies bei Logout)
      */
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     // clientseitig
