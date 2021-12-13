@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.*;
  */
 
 @RestController
-public class ServersController {
+public class RequestController {
 
     @Autowired
     private LevelsService levelsService;
@@ -57,6 +57,9 @@ public class ServersController {
 
     @GetMapping("/api/level")
     public @ResponseBody ResponseEntity getLevel(int id) { return ResponseEntity.status(200).body(this.levelsService.getLevelById(id)); }
+
+    @GetMapping("/api/checkLevel")
+    public @ResponseBody ResponseEntity checkLevel(Level level) { return ResponseEntity.status(200).body(this.levelsService.checkLevelhasPassed(level)); }
 
     @PostMapping("/api/createLevel")
     public @ResponseBody ResponseEntity createLevel(@RequestBody Level level) {

@@ -24,4 +24,9 @@ public class LevelsService {
     public void save(Level level) {
         this.levelsRepository.save(level);
     }
+
+    //TODO Prüfen ob Erfüllkriterien erfüllt sind
+    public boolean checkLevelhasPassed(Level level) { return false; }
+
+
 }

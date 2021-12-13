@@ -1,5 +1,6 @@
 package com.example.server.entities.userModels;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -8,8 +9,7 @@ import javax.persistence.*;
 
 @Entity
 @Table
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 public class User {
     @Id
@@ -29,17 +29,9 @@ public class User {
         this.userName = urf.getAlias();
     }
 
+    public boolean isAdmin(){ return this.getRole() == Role.ADMIN ? true : false; }
 
-    public boolean isAdmin(){
-        return this.getRole() == Role.ADMIN ? true : false;
-    }
-    public boolean isAuthor(){
-        return this.getRole() == Role.AUTHOR ? true : false;
-    }
-    public boolean isUser(){
-        return this.getRole() == Role.USER ? true : false;
-    }
-
+    public boolean isAuthor(){ return this.getRole() == Role.AUTHOR ? true : false; }
 
 
 }

@@ -17,5 +17,8 @@ public class Level {
     private Subject subject;
     private Integer recommendedTime;
     private Difficulty difficulty;
+    private boolean isPassed;
+
+    //TODO erfüllkriterien ?
 
 }

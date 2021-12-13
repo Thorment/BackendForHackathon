@@ -19,12 +19,6 @@ public class UsersService {
         return (List<User>) this.usersRepository.findAll();
     }
 
-    public boolean isAdmin(User user){
-        return user.getRole() == Role.ADMIN ? true : false;
-    }
-
-    public boolean isAuthor(User user) { return user.getRole() == Role.AUTHOR ? true : false; }
-
     //FIXME Übergebener User hat prinzipiell noch keine ID in dem Statium
     public boolean checkIfUserExists(User user) { return this.usersRepository.existsById(user.getIdNumber()); }
 
@@ -48,11 +42,14 @@ public class UsersService {
 
     public void saveUser(UserRegistrationForm user) {
         //todo admincheck -> erweiterung um attr
-        User user1 = new User();
-        user1.setEMail(user.getEmailAdress());
-        user1.setPassword(user.getPassword());
-        user1.setUserName(user.getAlias());
-        this.usersRepository.save(user1);
+        User insertUser = new User();
+        insertUser.setEMail(user.getEmailAdress());
+        insertUser.setPassword(user.getPassword());
+        insertUser.setUserName(user.getAlias());
+        insertUser.setRole(Role.USER);
+        insertUser.setExp(0);
+        insertUser.setLevel(0);
+        this.usersRepository.save(insertUser);
     }
 
 
