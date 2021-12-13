@@ -30,10 +30,16 @@ public class User {
     }
 
 
+    public boolean isAdmin(){
+        return this.getRole() == Role.ADMIN ? true : false;
+    }
+    public boolean isAuthor(){
+        return this.getRole() == Role.AUTHOR ? true : false;
+    }
+    public boolean isUser(){
+        return this.getRole() == Role.USER ? true : false;
+    }
 
-public void sout (){
-   // System.out.println(new Users().getUserName());
-}
 
 
 }

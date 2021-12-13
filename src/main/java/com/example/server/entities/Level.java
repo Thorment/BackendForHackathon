@@ -12,10 +12,12 @@ import javax.persistence.*;
 @Getter
 @Setter
 public class Level {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 
-    private int test;
+    private String name;
+    private Subject subject;
+    private Integer recommendedTime;
+    private Difficulty difficulty;
 
 }

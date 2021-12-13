@@ -38,7 +38,14 @@ public class ServersController {
         return ResponseEntity.status(200).body(this.usersService.getAll());
     }
 
-    @PostMapping("/api/user")
+    @GetMapping("/api/userByID")
+    public @ResponseBody ResponseEntity getUserByID(Integer id) {
+        User user = usersService.getUserById(id);
+        System.out.println("Benutzerkram name :" + user.getUserName() + "password lulu" + user.getPassword() );
+        return ResponseEntity.status(200).body(this.usersService.getUserById(id));
+    }
+
+    @PostMapping("/api/userCreation")
     public @ResponseBody ResponseEntity createUser(@RequestBody UserRegistrationForm user) {
         if (false) { //Datenbankabfrage ob es den User bereits gibt
             return ResponseEntity.status(409).build();

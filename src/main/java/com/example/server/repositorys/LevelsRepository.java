@@ -7,3 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface LevelsRepository extends CrudRepository<Level,Integer> {
 }
+
+// Create - Read - update - delete = CRUD

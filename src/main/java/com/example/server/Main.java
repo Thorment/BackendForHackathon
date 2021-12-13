@@ -1,5 +1,7 @@
 package com.example.server;
 
+import com.example.server.entities.User;
+import com.example.server.entities.UserRegistrationForm;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -17,8 +19,8 @@ public class Main {
 		System.out.println("Ahh der Strom läuft weg!");
 		gitgud(dino);
 		gitgud(kristin);
-
-
+		//todo arbeiten!
+		//todo okidoki
 	}
 
 	public static void dance(Item item) {
