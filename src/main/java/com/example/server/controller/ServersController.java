@@ -47,6 +47,7 @@ public class ServersController {
     @PostMapping("/api/userCreation")
     public @ResponseBody ResponseEntity createUser(@RequestBody UserRegistrationForm user) {
         if (false) { //Datenbankabfrage ob es den User bereits gibt
+            // if (!usersService.checkIfUserExists(user)) { //Datenbankabfrage ob es den User bereits gibt
             return ResponseEntity.status(409).build();
         } else {
 
