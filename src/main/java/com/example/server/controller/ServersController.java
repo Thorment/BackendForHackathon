@@ -1,6 +1,7 @@
 package com.example.server.controller;
 
 import com.example.server.entities.levelModels.Level;
+import com.example.server.entities.userModels.Role;
 import com.example.server.entities.userModels.UserRegistrationForm;
 import com.example.server.services.LevelsService;
 import com.example.server.services.UsersService;
@@ -35,6 +36,10 @@ public class ServersController {
 
     @GetMapping("/api/userById")
     public @ResponseBody ResponseEntity getUserByID(Integer id) { return ResponseEntity.status(200).body(this.usersService.getUserById(id)); }
+
+    @GetMapping("/api/userByRole")
+    public @ResponseBody ResponseEntity getUserByRole(Role role) { return ResponseEntity.status(200).body(this.usersService.getUserByRole(role)); }
+
 
     @PostMapping("/api/createUser")
     public @ResponseBody ResponseEntity createUser(@RequestBody UserRegistrationForm user) {

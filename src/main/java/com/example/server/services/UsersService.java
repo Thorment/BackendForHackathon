@@ -19,23 +19,31 @@ public class UsersService {
         return (List<User>) this.usersRepository.findAll();
     }
 
+    public boolean isAdmin(User user){
+        return user.getRole() == Role.ADMIN ? true : false;
+    }
+
+    public boolean isAuthor(User user) { return user.getRole() == Role.AUTHOR ? true : false; }
+
+    //FIXME Übergebener User hat prinzipiell noch keine ID in dem Statium
+    public boolean checkIfUserExists(User user) { return this.usersRepository.existsById(user.getIdNumber()); }
+
+    public void deleteUserIfExists(User user) { this.usersRepository.deleteById(user.getIdNumber()); }
+
+    public void ragnarok(){ this.usersRepository.deleteAll(); }
+
     public User getUserById(int userId) {
         User user = (User) this.usersRepository.findById(userId).get();
         return user;
     }
 
-    //FIXME Übergebener User hat prinzipiell noch keine ID in dem Statium
-    public boolean checkIfUserExists(User user) { return this.usersRepository.existsById(user.getIdNumber());}
-
-    public void deleteUserIfExists(User user) { this.usersRepository.deleteById(user.getIdNumber());}
-
-    public void ragnarok(){ this.usersRepository.deleteAll();}
-
-    public boolean isAdmin(User user){
-        return user.getRole() == Role.ADMIN ? true : false;
-    }
-    public boolean isAuthor(User user){
-        return user.getRole() == Role.AUTHOR ? true : false ;
+    public User getUserByRole(Role role) {
+        for (User user : getAll()) {
+            if (user.getRole().equals(role)) {
+                return user;
+            }
+        }
+        return null;
     }
 
     public void saveUser(UserRegistrationForm user) {
