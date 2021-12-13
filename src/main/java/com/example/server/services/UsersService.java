@@ -1,14 +1,13 @@
 package com.example.server.services;
 
-import com.example.server.entities.Role;
-import com.example.server.entities.User;
-import com.example.server.entities.UserRegistrationForm;
+import com.example.server.entities.userModels.Role;
+import com.example.server.entities.userModels.User;
+import com.example.server.entities.userModels.UserRegistrationForm;
 import com.example.server.repositorys.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UsersService {
@@ -25,6 +24,7 @@ public class UsersService {
         return user;
     }
 
+    //FIXME Übergebener User hat prinzipiell noch keine ID in dem Statium
     public boolean checkIfUserExists(User user) { return this.usersRepository.existsById(user.getIdNumber());}
 
     public void deleteUserIfExists(User user) { this.usersRepository.deleteById(user.getIdNumber());}

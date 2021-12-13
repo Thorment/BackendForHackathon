@@ -1,6 +1,6 @@
-package com.example.server.entities;
+package com.example.server.entities.userModels;
 
-public class Author extends User{
+public class Author extends User {
 
     public Author(){
         super();

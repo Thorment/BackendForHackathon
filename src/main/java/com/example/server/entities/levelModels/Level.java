@@ -1,9 +1,8 @@
-package com.example.server.entities;
+package com.example.server.entities.levelModels;
 
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.stereotype.Repository;
 
 import javax.persistence.*;
 
@@ -14,7 +13,6 @@ import javax.persistence.*;
 public class Level {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     private String name;
     private Subject subject;
     private Integer recommendedTime;

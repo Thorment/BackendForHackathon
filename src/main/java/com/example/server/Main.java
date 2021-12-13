@@ -1,7 +1,5 @@
 package com.example.server;
 
-import com.example.server.entities.User;
-import com.example.server.entities.UserRegistrationForm;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

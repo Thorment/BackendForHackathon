@@ -1,6 +1,6 @@
 package com.example.server.repositorys;
 
-import com.example.server.entities.Level;
+import com.example.server.entities.levelModels.Level;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
