@@ -1,6 +1,6 @@
 package com.example.server.controller;
 
-import com.example.server.entities.Level;
+import com.example.server.entities.Admin;
 import com.example.server.entities.User;
 import com.example.server.entities.UserRegistrationForm;
 import com.example.server.services.LevelsService;
@@ -8,17 +8,16 @@ import com.example.server.services.UsersService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class ServersController {
@@ -50,12 +49,13 @@ public class ServersController {
         if (false) { //Datenbankabfrage ob es den User bereits gibt
             return ResponseEntity.status(409).build();
         } else {
-            User usa = new User(user);
-            usersService.saveUser(usa);
+
+            usersService.saveUser(user);
             return ResponseEntity.status(200).build();
         }
 
     }
+
 
 
     /**
