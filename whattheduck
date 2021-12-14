@@ -1,0 +1,47 @@
+
+** Good to know about Spring **
+
+Spring-Framework basiert auf den folgenen Prinzipien: Dependency Injection, Aspektorientierte Programmierung und
+beinhaltete Vorlagen vereinfachen die Arbeit mit APIs. Dadurch wird ein POJO-basiertes Programmieren ermöglicht.
+Vorteile:
+    -> Vereinfachte Umsetzung von
+            -> Transaktionsmanagement
+            -> Schnittstellen
+            -> Datenbankzugriff
+            -> flexible Modulsammlung
+            -> kein Applikationsserver notwendig (über web-dep -> tomcat)
+
+ Design Pattern -> Inversion of Control (IOC)
+ Objekte die von SpringIOC gemanagt (initialisiert, konfiguriert und zusammengestellt) werden, nennt man Beans.
+    -> Wird auch dependency injection genannt
+        -> DI:  hierbei definieren Objekte ihre Abhängigkeiten zu anderen Objekten, wobei der IOC Container diese zur
+                diese zur Laufzeit auflöst.
+                -> führt zu übersichtlicherm Code und loser Kopplung zwischen Klassen
+
+SpringBoot ist eine Erweiterung und folgt dem Konvention vor Konfiguration, die ohne XML-Kofiguration auskommt.
+Eine beworbene Methode für SpringBoot sind Microservices.
+
+Abhängigkeiten können entweder direkt über die Startkonfiguration mit dem SpringIntizilr mitgegeben werden oder
+über das beinhaltete Managementtool Maven oder Gradle. Durch Scannen des Klassenpfads können weitere Konfigurationen
+ vorgenommen werden.
+
+Ein wesentlicher und nützlicher Bestandteil von Spring sind die Annotations.
+-> häufigsten Annotations:
+        - @Autowired:               teilt Spring mit wo es mittels Injection Objekte in andere Klassen einfügen soll
+        - @Repository:              für Data Access Object Klassen. DAO stellt ein Pattern da, dass auf einheitliche Weise den
+                                    Zugriff auf Datenquellen kapselt (zb. Datenbanken)
+        - @ComponentScan:           bewirkt dass beim Start der Classpath nach Klassen gescannt wird, die mit einer Annotation
+                                    annotiert sind. Für die gefundenen Klassen werden automatisch Beans erzeugt
+        - @Component:               generischer Stereotyp für eine Bean die weder Service noch Repository
+                                    -> @Controller, @Service, @Repository stellen spezialisierungen dieser Annotation dar
+        - @Service:                 markiert eine Klasse als Dienstklasse
+        - @SpringBootApplication:   wird der Hauptklasse der Anwendung zugewiesen, die im Top-Level-Paket liegen muss
+                                    SpringBoot wird dadurch durch alle Unterordner scannen
+        - @Controller:              markiert eine Klasse als Controller bzw. Servlet. Diese Klasse wird automatisch nach
+                                    @RequestMapping Annotation durchsucht
+                                    -> @RequestMapping bildet URLs auf Klassen oder Methoden ab. Bei Anwendung auf einer
+                                       Klasse definiert es den Basispfad für Anfragen des Controllers. Angewandt auf eine
+                                       Methode definiert es die URI durch den die Methode zugeführt wird
+        - @RequestBody:             annotiert die Methodenargumente von Anfragehandlern und deutet an, dass diese auf den
+                                    Wert des HTTP Anfrage-Body gebunden werden soll
+                                    -> @Responsebody ist die Antwort auf den Request
