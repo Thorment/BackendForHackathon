@@ -7,7 +7,9 @@ import com.example.server.repositorys.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UsersService {
@@ -19,20 +21,48 @@ public class UsersService {
         return (List<User>) this.usersRepository.findAll();
     }
 
-    //FIXME Übergebener User hat prinzipiell noch keine ID in dem Statium
-    public boolean checkIfUserExists(User user) { return this.usersRepository.existsById(user.getIdNumber()); }
-
     public void deleteUserIfExists(User user) { this.usersRepository.deleteById(user.getIdNumber()); }
 
     public void ragnarok(){ this.usersRepository.deleteAll(); }
 
-     public Boolean isUsernamePasswordCombinationValid(UserRegistrationForm user) {
+
+    /**
+     * change return to optional
+     * reason: two possible return values -> boolean if exits in db & matched user from db
+     * optional.getPresent()  -> boolean
+     * optional.get()         -> object
+     *
+     */
+    public Optional<User> checkIfUserExistsAndGetUser(UserRegistrationForm formUser) {
+        User userDb = null;
+        for (User u : getAll()) {
+            if (formUser.getEMail().equals(u.getEMail())) {
+                userDb = u;
+            }
+        }
+        return Optional.of(userDb);
+    }
+
+
+     public boolean isUsernamePasswordCombinationValid(UserRegistrationForm user) {
         for (User user2 : getAll()) {
             if (user2.getEMail().equals(user.getEMail()) && user2.getPassword().equals(user.getPassword())) {
                 return true;
             } else return false;
         }return false;
     }
+
+    public boolean isUserLoginValid(UserRegistrationForm formUser) {
+        Optional<User> opUser = checkIfUserExistsAndGetUser(formUser);
+        boolean valid = false;
+        if (opUser.isPresent()) {
+            User dbUser = opUser.get();
+            valid = dbUser.getEMail().equals(formUser.getEMail()) && dbUser.getPassword().equals(formUser.getPassword());
+        }
+        return valid;
+    }
+
+
 
     public User getUserById(int userId) {
         User user = (User) this.usersRepository.findById(userId).get();
