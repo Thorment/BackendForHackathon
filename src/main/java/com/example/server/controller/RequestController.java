@@ -44,22 +44,20 @@ public class RequestController {
     @GetMapping("/api/userByRole")
     public @ResponseBody ResponseEntity getUserByRole(Role role) { return ResponseEntity.status(200).body(this.usersService.getUserByRole(role)); }
 
-    @GetMapping("/api/userByEmailAndPassword")
+    @PostMapping("/api/userByEmailAndPassword")
     public @ResponseBody ResponseEntity getUserByEmailAndPassword(@RequestBody UserRegistrationForm user) {
-        if (false) {
+        if (!usersService.isUserLoginValid(user)) {
             return ResponseEntity.status(409).build();
         } else {
-            System.out.println(usersService.isUsernamePasswordCombinationValid(user));
             return ResponseEntity.status(200).build();
         }
     }
 
     @PostMapping("/api/createUser")
     public @ResponseBody ResponseEntity createUser(@RequestBody UserRegistrationForm user) {
-       if (!usersService.checkIfUserExistsAndGetUser(user).isPresent()) {
+       if (usersService.checkIfUserExistsAndGetUser(user).isPresent()) {
             return ResponseEntity.status(409).build();
         } else {
-            System.out.println("email: "+ user.getEMail() +" Passwort: " + user.getPassword() +" Username: "+ user.getUserName());
             usersService.saveUser(user);
             return ResponseEntity.status(200).build();
         }

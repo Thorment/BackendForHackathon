@@ -40,16 +40,7 @@ public class UsersService {
                 userDb = u;
             }
         }
-        return Optional.of(userDb);
-    }
-
-
-     public boolean isUsernamePasswordCombinationValid(UserRegistrationForm user) {
-        for (User user2 : getAll()) {
-            if (user2.getEMail().equals(user.getEMail()) && user2.getPassword().equals(user.getPassword())) {
-                return true;
-            } else return false;
-        }return false;
+        return Optional.ofNullable(userDb);
     }
 
     public boolean isUserLoginValid(UserRegistrationForm formUser) {
