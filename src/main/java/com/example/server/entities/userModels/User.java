@@ -24,9 +24,9 @@ public class User {
 
 
     public User(UserRegistrationForm urf) {
-        this.eMail = urf.getEmailAdress();
+        this.eMail = urf.getEMail();
         this.password = urf.getPassword();
-        this.userName = urf.getAlias();
+        this.userName = urf.getUserName();
     }
 
     public boolean isAdmin(){ return this.getRole() == Role.ADMIN ? true : false; }

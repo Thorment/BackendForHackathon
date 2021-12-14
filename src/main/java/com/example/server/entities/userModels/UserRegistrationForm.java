@@ -5,9 +5,9 @@ import lombok.Data;
 @Data
 public class UserRegistrationForm extends User {
 
-    private String emailAdress;
+    private String eMail;
     private String password;
-    private String alias;
+    private String userName;
 
 
 
