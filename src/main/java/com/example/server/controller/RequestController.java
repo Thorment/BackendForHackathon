@@ -7,6 +7,7 @@ import com.example.server.services.LevelsService;
 import com.example.server.services.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -25,7 +26,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@CrossOrigin(origins = { "*" })
+@CrossOrigin(origins = { "null" })
 public class RequestController {
 
     @Autowired
@@ -33,19 +34,30 @@ public class RequestController {
     @Autowired
     private UsersService usersService;
 
-   // @CrossOrigin(origins = "http://localhost:8080")
+
     @GetMapping("/api/users")
     public @ResponseBody ResponseEntity getUsers() { return ResponseEntity.status(200).body(this.usersService.getAll()); }
 
-    //@CrossOrigin(origins = "http://localhost:8080")
+    @GetMapping("/api/userByEmailAndPassword")
+    public @ResponseBody ResponseEntity getUserByEmailAndPassword(@RequestBody UserRegistrationForm user) {
+        if (false) {
+            return ResponseEntity.status(409).build();
+        } else {
+            System.out.println("hallo wir sind im else");
+            System.out.println(usersService.isUsernamePasswordCombinationValid(user));
+            return ResponseEntity.status(200).build();
+        }
+
+    }
+
     @GetMapping("/api/userById")
     public @ResponseBody ResponseEntity getUserByID(Integer id) { return ResponseEntity.status(200).body(this.usersService.getUserById(id)); }
 
-    //@CrossOrigin(origins = "http://localhost:8080")
+
     @GetMapping("/api/userByRole")
     public @ResponseBody ResponseEntity getUserByRole(Role role) { return ResponseEntity.status(200).body(this.usersService.getUserByRole(role)); }
 
-    //@CrossOrigin(origins = "http://localhost:8080")
+
     @PostMapping("/api/createUser")
     public @ResponseBody ResponseEntity createUser(@RequestBody UserRegistrationForm user) {
        // if (usersService.checkIfUserExists(user) == true) {
@@ -53,7 +65,7 @@ public class RequestController {
             return ResponseEntity.status(409).build();
         } else {
             //FIXME user muss erst "befüllt" werden bevor er in die DB kommt
-            System.out.println(user.getEMail() + user.getPassword() + user.getUserName());
+            System.out.println("email: "+ user.getEMail() +" Passwort: " + user.getPassword() +" Username: "+ user.getUserName());
             usersService.saveUser(user);
             return ResponseEntity.status(200).build();
         }

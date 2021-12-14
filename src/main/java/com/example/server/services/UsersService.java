@@ -26,6 +26,14 @@ public class UsersService {
 
     public void ragnarok(){ this.usersRepository.deleteAll(); }
 
+     public Boolean isUsernamePasswordCombinationValid(UserRegistrationForm user) {
+        for (User user2 : getAll()) {
+            if (user2.getEMail().equals(user.getEMail()) && user2.getPassword().equals(user.getPassword())) {
+                return true;
+            } else return false;
+        }return false;
+    }
+
     public User getUserById(int userId) {
         User user = (User) this.usersRepository.findById(userId).get();
         return user;
@@ -41,12 +49,10 @@ public class UsersService {
     }
 
     public void saveUser(UserRegistrationForm user) {
-        //todo admincheck -> erweiterung um attr
         User insertUser = new User();
         insertUser.setEMail(user.getEMail());
         insertUser.setPassword(user.getPassword());
-       // insertUser.setUserName(user.getAlias());
-        insertUser.setUserName("banane");
+        insertUser.setUserName(user.getUserName());
         insertUser.setRole(Role.USER);
         insertUser.setExp(0);
         insertUser.setLevel(0);
