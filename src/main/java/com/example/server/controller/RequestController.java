@@ -43,7 +43,6 @@ public class RequestController {
         if (false) {
             return ResponseEntity.status(409).build();
         } else {
-            System.out.println("hallo wir sind im else");
             System.out.println(usersService.isUsernamePasswordCombinationValid(user));
             return ResponseEntity.status(200).build();
         }
